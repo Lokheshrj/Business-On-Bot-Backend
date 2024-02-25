@@ -8,7 +8,7 @@ Get All Posts:
 https://business-on-bot-backend-rouge.vercel.app/posts
 
 Search By Name:
-https://business-on-bot-backend-rouge.vercel.app/user/:name
+https://business-on-bot-backend-rouge.vercel.app/user/:id
 
 NO SQL DATABASE SO NO REALTIONAL DATABASE
 
