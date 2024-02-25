@@ -98,6 +98,6 @@ mongoose
     /*ADD DATA ONE TIME */
     // User.insertMany(users);
     // Post.insertMany(posts);
-     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
