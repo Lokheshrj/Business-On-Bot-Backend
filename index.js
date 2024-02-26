@@ -44,6 +44,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.get("/search", async (req, res) => {
+  console.log("Arrives");
   try {
     console.log("reached  search route");
     const { query } = req.query; // Extract the search query from query parameters
@@ -76,7 +77,6 @@ app.use("/posts", postRoutes);
 /* MONGOOSE SETUP */
 const PORT = 3000;
 
-
 /*mongoose.connect(
   `mongodb+srv://lokheshrj:${process.env.db_pass}@cluster0.8ttolti.mongodb.net/?retryWrites=true&w=majority`
   ).then(()=>app.listen(5000,()=>console.log("Connected"))).catch((e)=> console.log(e));
@@ -101,3 +101,18 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
+
+  app.get('/user/:name', async (req, res) => {
+    const { name } = req.params;
+    try {
+      // Search for users where firstName or lastName matches the provided name
+      const user = await User.findOne({ firstName: name });
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
