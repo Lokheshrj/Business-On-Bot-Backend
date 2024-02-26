@@ -107,7 +107,7 @@ mongoose
   app.get('/',  (req, res) => {
     res.send("hello working");
   });
-  app.get('/users', async (req, res) => {
+  app.get('/usersf', async (req, res) => {
     try {
       const users = await User.find();
       res.json(users);
@@ -116,8 +116,9 @@ mongoose
     }
   });
   
-  app.get('/users/:name', async (req, res) => {
+  app.get('/usersf/:name', async (req, res) => {
     const { name } = req.params;
+    //res.send("Arrives");
     try {
       // Search for users where firstName or lastName matches the provided name
       const user = await User.findOne({ firstName: name });
@@ -131,7 +132,7 @@ mongoose
     }
   });
   
-  app.get('/posts', async (req, res) => {
+  app.get('/post', async (req, res) => {
     try {
       const posts = await Post.find();
       res.json(posts);
@@ -140,7 +141,7 @@ mongoose
     }
   });
   
-  app.get('/users/:name/posts', async (req, res) => {
+  app.get('/usersf/:name/post', async (req, res) => {
     const { name } = req.params;
     try {
       // Find the user by firstName (assuming firstName stores the user's name)
