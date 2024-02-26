@@ -131,3 +131,7 @@ mongoose
       res.status(500).json({ error: 'Internal server error' });
     }
   });
+
+  app.get('/',  (req, res) => {
+    res.send("hello working");
+  });
