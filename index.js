@@ -135,3 +135,54 @@ mongoose
   app.get('/',  (req, res) => {
     res.send("hello working");
   });
+  app.get('/users', async (req, res) => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+  app.get('/user/:name', async (req, res) => {
+    const { name } = req.params;
+    try {
+      // Search for users where firstName or lastName matches the provided name
+      const user = await User.findOne({ firstName: name });
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+  app.get('/postss', async (req, res) => {
+    try {
+      const posts = await Post.find();
+      res.json(posts);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+  app.get('/users/:name/posts', async (req, res) => {
+    const { name } = req.params;
+    try {
+      // Find the user by firstName (assuming firstName stores the user's name)
+      const user = await User.findOne({ firstName: name });
+      
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      
+      // Find all posts by the user using their user ID
+      const userPosts = await Post.find({ userId: user._id });
+      
+      res.json(userPosts);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
