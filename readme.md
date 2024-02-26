@@ -2,17 +2,19 @@ FrontEnd Client:
 https://business-on-bot-front.vercel.app/
 
 BackEnd Server:
-https://business-on-bot-backend-rouge.vercel.app/
+https://bob-b.onrender.com/
 
 Get All Users:
-https://business-on-bot-backend-rouge.vercel.app/users
+https://bob-b.onrender.com/usersf
 
 Get All Posts:
-https://business-on-bot-backend-rouge.vercel.app/posts
-
+https://bob-b.onrender.com/post
 
 Search By Name:
-https://business-on-bot-backend-rouge.vercel.app/user/:id
+https://bob-b.onrender.com/usersf/:name
+
+Search Post By Name:
+https://bob-b.onrender.com/usersf/:name/post
 
 NO SQL DATABASE SO NO REALTIONAL DATABASE
 
